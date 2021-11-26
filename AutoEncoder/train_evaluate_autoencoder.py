@@ -38,7 +38,7 @@ def train(model, trainloader, epochs, device, criterion, optimizer):
         print('Epoch {} of {}, Train Loss: {:.3f}'.format(epoch+1, epochs, loss))
 
         if epoch % 1 == 0:
-            img = img.view(img.size(0),1,28,28)
+            img = img.view(img.size(0),3,32,32)
             utils.save_image(img, './MNIST_Images/MNIST_Original_%i.png' % epoch)
             utils.save_decoded(outputs.cpu().data, epoch)
 
@@ -51,7 +51,7 @@ def test(model, test_loader, device, criterion, optimizer):
         img = img.view(img.size(0), -1)
         utils.save_image(img, './Mnist_Autoencoder/MNIST_Reconstructed/MNIST_Original.png')
         outputs = model(img)
-        outputs = outputs.view(outputs.size(0),1,28,28)
+        outputs = outputs.view(outputs.size(0),3,32,32)
         utils.save_image(outputs, './Mnist_Autoencoder/MNIST_Reconstructed/MNIST_Reconstruction.png')
         break
     

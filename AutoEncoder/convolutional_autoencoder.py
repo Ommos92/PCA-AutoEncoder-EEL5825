@@ -18,16 +18,14 @@ class Autoencoder(nn.Module):
     """
     def __init__(self, mode):
         super(Autoencoder,self).__init__()
-
-
         
         # encoders
-        self.enc1 = nn.Linear(in_features=784, out_features=256)
-        self.enc2 = nn.Linear(in_features=256, out_features=128)
+        self.enc1 = nn.Linear(in_features=3072, out_features=784)
+        self.enc2 = nn.Linear(in_features=784, out_features=128)
        
         # decoders
-        self.dec1 = nn.Linear(in_features=128, out_features=256)
-        self.dec2 = nn.Linear(in_features=256, out_features=784)
+        self.dec1 = nn.Linear(in_features=128, out_features=784)
+        self.dec2 = nn.Linear(in_features=784, out_features=3072)
 
         #Convolutional Autoencoder
 

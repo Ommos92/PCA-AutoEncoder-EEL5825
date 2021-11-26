@@ -24,5 +24,5 @@ def dir():
         os.makedirs(img_dir)
 
 def save_decoded(img,epoch):
-    img = img.view(img.size(0),1,28,28)
+    img = img.view(img.size(0),3,32,32)
     save_image(img, './MNIST_Images/autoencoded_img_{}.png'.format(epoch))

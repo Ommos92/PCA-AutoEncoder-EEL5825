@@ -28,16 +28,12 @@ def run_main(FLAGS):
     
     # ======================================================================
     # Define loss function.
-    # ----------------- YOUR CODE HERE ----------------------
-    #
-    # Remove NotImplementedError and assign correct loss function.
+    # ======================================================================
     criterion = nn.MSELoss()
     
     # ======================================================================
     # Define optimizer function.
-    # ----------------- YOUR CODE HERE ----------------------
-    #
-    # Remove NotImplementedError and assign appropriate optimizer with learning rate and other paramters.
+    # ======================================================================
     optimizer = optim.Adam(model.parameters(), lr=FLAGS.learning_rate)
         
     
@@ -50,9 +46,9 @@ def run_main(FLAGS):
     
     # Load datasets for training and testing
     # Inbuilt datasets available in torchvision (check documentation online)
-    dataset1 = datasets.MNIST('./data/', train=True, download=True,
+    dataset1 = datasets.CIFAR10('./data/', train=True, download=True,
                        transform=transform)
-    dataset2 = datasets.MNIST('./data/', train=False,
+    dataset2 = datasets.CIFAR10('./data/', train=False,
                        transform=transform)
     train_loader = DataLoader(dataset1, batch_size = FLAGS.batch_size, 
                                 shuffle=True, num_workers=4)
@@ -84,11 +80,11 @@ if __name__ == '__main__':
                         type=int, default=1,
                         help='Select mode between 1-5.')
     parser.add_argument('--learning_rate',
-                        type=float, default=0.1,
+                        type=float, default=0.001,
                         help='Initial learning rate.')
     parser.add_argument('--num_epochs',
                         type=int,
-                        default=60,
+                        default=10,
                         help='Number of epochs to run trainer.')
     parser.add_argument('--batch_size',
                         type=int, default=10,
